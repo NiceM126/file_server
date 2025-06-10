@@ -1,0 +1,56 @@
+# 文件共享服务
+
+基于Nginx搭建的现代化文件共享服务，支持响应式设计和文件下载功能。
+
+## 功能特性
+
+- 美观的响应式界面，适配各种设备
+- 文件列表自动加载
+- 文件大小智能格式化显示
+- 文件修改时间显示
+- 一键下载功能
+
+## 技术栈
+
+- Nginx - 高性能Web服务器
+- HTML5/CSS3 - 响应式前端界面
+- JavaScript - 动态交互
+- Lua (可选) - 服务器端脚本
+
+## 安装部署
+
+1. 确保已安装Nginx
+2. 将本项目文件复制到Nginx网站目录
+3. 修改`file_server.conf`中的路径配置
+4. 重启Nginx服务
+
+```bash
+sudo systemctl restart nginx
+```
+
+## 配置说明
+
+- `file_server.conf`: Nginx主配置文件
+- `index.html`: 前端主页面
+- `css/style.css`: 样式文件
+- `js/main.js`: 前端交互逻辑
+
+## 文件结构
+
+```
+/home/nier/share/       # 共享文件目录
+  |- file_server/       # 项目文件
+     |- css/
+     |- js/
+     |- index.html
+     |- file_server.conf
+     |- README.md
+```
+
+## 作者
+
+Nier Demon
+
+## 许可证
+
+MIT License

@@ -1,0 +1,245 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --border-color: #ddd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.author {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+.intro, .file-list {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.tech-stack ul {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.tech-stack li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.file-list {
+    min-height: 300px;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 2rem;
+}
+
+/* 文件表格样式 */
+.file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.file-table th, .file-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+.file-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.download-btn, .folder-link {
+    display: inline-block;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.download-btn {
+    background-color: var(--primary-color);
+}
+
+.folder-link {
+    background-color: #64d694;
+}
+
+.folder-label {
+    color: #7f8c8d;
+}
+
+.download-btn:hover, .folder-link:hover {
+    background-color: var(--secondary-color);
+}
+
+.path-navigation {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.back-link:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.breadcrumbs {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.empty, .error {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    main {
+        padding: 1rem 0;
+    }
+
+    .file-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .file-table th, 
+    .file-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .download-btn, 
+    .folder-link {
+        padding: 4px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .intro, .file-list {
+        padding: 1rem;
+    }
+
+    .file-table th, 
+    .file-table td {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+
+    .path-navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .breadcrumbs {
+        font-size: 0.85rem;
+    }
+}

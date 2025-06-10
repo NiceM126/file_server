@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件共享服务 | mjdmx.cn</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>文件共享服务</h1>
+            <p class="author">作者: Nier Demon | <a href="https://github.com/nicem126" target="_blank" style="color: white; text-decoration: underline;">GitHub</a></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>关于本服务</h2>
+            <p>这是一个基于Nginx搭建的文件共享服务，支持多设备访问和文件下载。</p>
+        
+            <div class="tech-stack" style="padding-top: 20px;">
+                <h3>技术栈</h3>
+                <ul>
+                    <li>Nginx - 高性能Web服务器</li>
+                    <li>HTML5/CSS3 - 响应式前端界面</li>
+                    <li>JavaScript - 动态交互</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="file-list">
+            <h2>文件列表</h2>
+            <div id="file-list-container">
+                <!-- 文件列表将通过JS动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 文件共享服务 - mjdmx.cn</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
