@@ -1,6 +1,6 @@
 # 文件共享服务
 
-基于Nginx搭建的现代化文件共享服务，支持响应式设计和文件下载功能。
+基于Nginx搭建的现代化文件共享服务，响应式设计，提供文件预览和文件下载功能。
 
 ## 功能特性
 
@@ -23,8 +23,8 @@
 ## 安装部署
 
 1. 确保已安装Nginx
-2. 将本项目文件复制到Nginx网站目录
-3. 修改`file_server.conf`中的路径配置
+2. 修改`file_server.conf`中的路径配置
+3. 将本项目文件复制到Nginx配置指定的root目录
 4. 重启Nginx服务
 
 ```bash
@@ -33,7 +33,7 @@ sudo systemctl restart nginx
 
 ## 配置说明
 
-- `file_server.conf`: Nginx主配置文件
+- `file_server.conf`: Nginx配置文件
 - `index.html`: 前端主页面
 - `css/style.css`: 样式文件
 - `js/main.js`: 前端交互逻辑
@@ -43,12 +43,17 @@ sudo systemctl restart nginx
 
 ```
 /home/nier/share/       # 共享文件目录
-  |- file_server/       # 项目文件
-     |- css/
-     |- js/
-     |- index.html
-     |- file_server.conf
-     |- README.md
+file_server/
+├── css
+│   └── style.css
+├── favicon.ico
+├── file_server.conf
+├── index.html
+├── js
+│   ├── main.js
+│   └── preview.js
+└── README.md
+
 ```
 
 ## 作者
