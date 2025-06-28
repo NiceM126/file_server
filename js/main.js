@@ -1,6 +1,26 @@
-document.addEventListener('DOMContentLoaded', function() {
+import { initPreview, isPreviewable, loadAndPreview } from './preview.js';
+
+document.addEventListener('DOMContentLoaded', async function() {
     const fileListContainer = document.getElementById('file-list-container');
+    const previewModal = document.getElementById('preview-modal');
+    const previewContent = document.getElementById('preview-content');
+    const previewTitle = document.getElementById('preview-title');
+    const closeBtn = document.querySelector('.close-btn');
     let currentPath = '/'; // 跟踪当前路径状态
+
+    // 初始化预览模块
+    initPreview();
+
+    // 预览模态框控制
+    closeBtn.addEventListener('click', () => {
+        previewModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === previewModal) {
+            previewModal.style.display = 'none';
+        }
+    });
     
     // 初始加载根目录
     fetch('/file-list')
@@ -54,7 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>
                                 ${file.isDirectory 
                                     ? `<a href="#" class="folder-link" data-path="${currentPath === '/' ? '' : currentPath}/${file.rawName}">📁 ${file.name}</a>`
-                                    : file.name}
+                                    : isPreviewable(file.name)
+                                        ? `<a href="#" class="previewable-file" data-path="${file.path}" data-name="${file.name}">${file.name}</a>`
+                                        : `<span class="non-previewable-file">${file.name}</span>`}
                             </td>
                             <td>${file.isDirectory ? '-' : formatFileSize(file.size)}</td>
                             <td>${new Date(file.mtime).toLocaleString()}</td>
@@ -111,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `${cleanCurrentPath}/${encodeURIComponent(cleanName)}` : 
                     encodeURIComponent(cleanName);
                 filePath = `/files/${encodedPath}?download=true`;
-                console.log('File download path:', filePath);
+                //console.log('File download path:', filePath);
             } else {
                 filePath = `/${cleanCurrentPath}/${cleanName}/`.replace(/\/+/g, '/');
             }
@@ -144,7 +166,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 添加点击事件处理
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', async function(e) {
+        // 处理可预览文件点击
+        if (e.target.classList.contains('previewable-file')) {
+            e.preventDefault();
+            const filePath = e.target.getAttribute('data-path');
+            const fileName = e.target.getAttribute('data-name');
+            
+            previewTitle.textContent = `预览: ${fileName}`;
+            previewModal.style.display = 'block';
+            previewContent.innerHTML = '<div class="loading">加载预览中...</div>';
+            
+            try {
+                const previewHtml = await loadAndPreview(filePath, fileName);
+                previewContent.innerHTML = previewHtml;
+            } catch (error) {
+                previewContent.innerHTML = '<div class="error">预览加载失败</div>';
+                console.error('预览失败:', error);
+            }
+            return;
+        }
+        
         if (e.target.classList.contains('folder-link')) {
             e.preventDefault();
             const folderPath = e.target.getAttribute('data-path');

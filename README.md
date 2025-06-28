@@ -9,13 +9,16 @@
 - 文件大小智能格式化显示
 - 文件修改时间显示
 - 一键下载功能
+- 文件预览功能，支持:
+  - 文本文件(.txt, .md, .log等)
+  - 代码文件(.js, .html, .css, .py等)
+  - 图片文件(.jpg, .png, .gif等)
 
 ## 技术栈
 
 - Nginx - 高性能Web服务器
 - HTML5/CSS3 - 响应式前端界面
 - JavaScript - 动态交互
-- Lua (可选) - 服务器端脚本
 
 ## 安装部署
 
@@ -34,6 +37,7 @@ sudo systemctl restart nginx
 - `index.html`: 前端主页面
 - `css/style.css`: 样式文件
 - `js/main.js`: 前端交互逻辑
+- `js/preview.js`: 文件预览处理逻辑
 
 ## 文件结构
 

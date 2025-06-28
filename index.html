@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>文件共享服务 | mjdmx.cn</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -44,6 +45,20 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/preview.js" type="module"></script>
+
+    <!-- 预览模态框 -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="preview-title">文件预览</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body" id="preview-content">
+                <!-- 预览内容将在这里动态加载 -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
