@@ -4,7 +4,7 @@
 
 // 支持的预览类型
 const PREVIEW_TYPES = {
-    TEXT: ['txt', 'md', 'log', 'json', 'xml', 'csv'],
+    TEXT: ['txt', 'md', 'log', 'json', 'xml', 'csv', 'conf', 'yaml'],
     CODE: ['js', 'html', 'css', 'py', 'java', 'php', 'sh', 'c', 'cpp'],
     IMAGE: ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']
 };
@@ -190,12 +190,12 @@ function initPreview() {
             const clickY = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const offsetX = (clickX - centerX) / centerX * 50;
-            const offsetY = (clickY - centerY) / centerY * 50;
             
-            // 放大图片并定位到点击位置
+            // 放大图片并定位到点击位置 (使用像素单位)
+            const offsetXPx = (clickX - centerX) * 2;
+            const offsetYPx = (clickY - centerY) * 2;
             img.classList.add('zoomed');
-            img.style.transform = `scale(2) translate(${-offsetX}%, ${-offsetY}%)`;
+            img.style.transform = `scale(2) translate(${-offsetXPx}px, ${-offsetYPx}px)`;
             img.style.cursor = 'grab';
         }
     };
